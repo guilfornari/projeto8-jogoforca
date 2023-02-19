@@ -1,9 +1,9 @@
-export default function Letra(props) {
+export default function Letra({ letter }) {
     return (
-        <button onClick={() => alert(props.letter)}
+        <button onClick={() => alert(letter)}
             disabled={true}
             className="enabled-button">
-            {props.letter}
+            {letter}
         </button>
     );
 }

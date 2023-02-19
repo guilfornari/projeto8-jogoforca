@@ -31,3 +31,16 @@ img {
     height: 60px;
     cursor: pointer;
 }
+
+.game-gallows div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.chosen-word {
+    margin-top: 282px;
+    color: black;
+    font-family: 'Noto Sans';
+    font-weight: 700;
+    font-size: 50px;
+}
