@@ -11,13 +11,15 @@ function App() {
   function chooseWord() {
     let chosenWord = palavras[Math.floor(Math.random() * palavras.length)];
     setChosenLetters(Array.from(chosenWord));
+    let x = Array.from(chosenWord)
+    console.log(x);
   }
 
 
   return (
     <div className="game-screen">
       <Jogo buttonFunction={chooseWord} word={chosenLetters} />
-      <Letras />
+      <Letras buttonEnabler={chosenLetters} />
     </div>
   );
 }
