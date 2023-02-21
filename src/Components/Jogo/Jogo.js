@@ -3,7 +3,7 @@ import "./jogo.css";
 import Palavra from "./Palavra";
 
 
-export default function Jogo({ buttonFunction, word }) {
+export default function Jogo({ buttonFunction, word, buttonEnabler, containsLetter, letter }) {
 
     return (
         <div className="game-gallows">
@@ -12,9 +12,14 @@ export default function Jogo({ buttonFunction, word }) {
             </figure>
             <div>
                 <div className="game-button">
-                    <button onClick={buttonFunction}>Escolher Palavra</button>
+                    <button className={(buttonEnabler.length > 0) ? "game-started-button" : undefined}
+                        onClick={buttonFunction}
+                        disabled={(buttonEnabler.length === 0) ? false : true}>Escolher Palavra</button>
                 </div>
-                <Palavra word={word} />
+                <div className="chosen-word">
+                    {word.map((char, index) => (<Palavra key={index} char={char} containsLetter={containsLetter} letter={letter} />))
+                    }
+                </div>
             </div>
         </div>
     );

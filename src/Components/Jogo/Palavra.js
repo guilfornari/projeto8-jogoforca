@@ -1,7 +1,6 @@
-export default function Palavra({ word }) {
+export default function Palavra({ char, index }) {
+
     return (
-        <div className="chosen-word">
-            {word.map((letter, index) => <span key={index}>{(false) ? letter : "_"}</span>)}
-        </div>
+        <span key={index}>{char}</span>
     );
 }

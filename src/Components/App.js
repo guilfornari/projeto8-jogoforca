@@ -6,20 +6,41 @@ import palavras from "../palavras";
 import React from "react";
 
 function App() {
+  const [wordLetters, setWordLetters] = React.useState([]);
   const [chosenLetters, setChosenLetters] = React.useState([])
+
 
   function chooseWord() {
     let chosenWord = palavras[Math.floor(Math.random() * palavras.length)];
-    setChosenLetters(Array.from(chosenWord));
-    let x = Array.from(chosenWord)
-    console.log(x);
+    let letterList = Array.from(chosenWord);
+    console.log(letterList);
+    for (let i = 0; i < letterList.length; i++) {
+      chosenLetters.push("_");
+    }
+    setChosenLetters([...chosenLetters]);
+    setWordLetters([...letterList]);
   }
 
+  function guessLetter(letter) {
+    let list = [...chosenLetters]
+    console.log(list);
+    if (wordLetters.includes(letter)) {
+      for (let i = 0; i < wordLetters.length; i++) {
+        if (letter === wordLetters[i]) {
+          list[i] = letter;
+        }
+      }
+      console.log(list);
+      setChosenLetters([...list]);
+    }
+  }
 
   return (
     <div className="game-screen">
-      <Jogo buttonFunction={chooseWord} word={chosenLetters} />
-      <Letras buttonEnabler={chosenLetters} />
+      <Jogo buttonFunction={chooseWord}
+        word={chosenLetters}
+        buttonEnabler={chosenLetters} />
+      <Letras buttonFunction={guessLetter} buttonEnabler={chosenLetters} />
     </div>
   );
 }

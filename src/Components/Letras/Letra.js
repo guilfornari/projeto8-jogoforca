@@ -1,8 +1,8 @@
-export default function Letra({ letter, buttonEnabler }) {
+export default function Letra({ buttonEnabler, buttonFunction, letter }) {
     return (
-        <button onClick={() => alert(letter)}
+        <button onClick={() => buttonFunction(letter)}
             disabled={(buttonEnabler.length > 0) ? false : true}
-            className="enabled-button">
+            className={(buttonEnabler.length > 0) ? "enabled-button" : undefined}>
             {letter}
         </button>
     );
