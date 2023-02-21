@@ -7,7 +7,9 @@ import React from "react";
 
 function App() {
   const [wordLetters, setWordLetters] = React.useState([]);
-  const [chosenLetters, setChosenLetters] = React.useState([])
+  const [chosenLetters, setChosenLetters] = React.useState([]);
+  const [errorCounter, setErrorCounter] = React.useState(0);
+  const [guessedLetters, setGuessedLetters] = React.useState([]);
 
 
   function chooseWord() {
@@ -22,16 +24,20 @@ function App() {
   }
 
   function guessLetter(letter) {
-    let list = [...chosenLetters]
-    console.log(list);
+    if (!guessedLetters.includes(letter)) {
+      guessedLetters.push(letter);
+      console.log([...guessedLetters])
+      setGuessedLetters([...guessedLetters])
+    }
     if (wordLetters.includes(letter)) {
       for (let i = 0; i < wordLetters.length; i++) {
         if (letter === wordLetters[i]) {
-          list[i] = letter;
+          chosenLetters[i] = letter;
         }
       }
-      console.log(list);
-      setChosenLetters([...list]);
+      setChosenLetters([...chosenLetters]);
+    } else {
+      setErrorCounter(errorCounter + 1);
     }
   }
 
@@ -39,8 +45,9 @@ function App() {
     <div className="game-screen">
       <Jogo buttonFunction={chooseWord}
         word={chosenLetters}
-        buttonEnabler={chosenLetters} />
-      <Letras buttonFunction={guessLetter} buttonEnabler={chosenLetters} />
+        buttonEnabler={chosenLetters}
+        errorCounter={errorCounter} />
+      <Letras buttonFunction={guessLetter} buttonEnabler={chosenLetters} otherEnabler={guessedLetters} />
     </div>
   );
 }
