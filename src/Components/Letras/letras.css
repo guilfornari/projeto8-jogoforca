@@ -25,3 +25,12 @@ ul button {
     color: #39739D;
     cursor: pointer;
 }
+
+.victory {
+    color: #27AE60;
+}
+
+.defeat {
+    color: #FF0000;
+
+}

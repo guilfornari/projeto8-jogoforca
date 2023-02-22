@@ -15,18 +15,17 @@ function App() {
   function chooseWord() {
     let chosenWord = palavras[Math.floor(Math.random() * palavras.length)];
     let letterList = Array.from(chosenWord);
-    console.log(letterList);
     for (let i = 0; i < letterList.length; i++) {
       chosenLetters.push("_");
     }
     setChosenLetters([...chosenLetters]);
     setWordLetters([...letterList]);
+    console.log([letterList])
   }
 
   function guessLetter(letter) {
     if (!guessedLetters.includes(letter)) {
       guessedLetters.push(letter);
-      console.log([...guessedLetters])
       setGuessedLetters([...guessedLetters])
     }
     if (wordLetters.includes(letter)) {
@@ -36,18 +35,20 @@ function App() {
         }
       }
       setChosenLetters([...chosenLetters]);
+      console.log([...chosenLetters]);
     } else {
       setErrorCounter(errorCounter + 1);
+      console.log(errorCounter);
     }
   }
 
   return (
     <div className="game-screen">
       <Jogo buttonFunction={chooseWord}
-        word={chosenLetters}
-        buttonEnabler={chosenLetters}
-        errorCounter={errorCounter} />
-      <Letras buttonFunction={guessLetter} buttonEnabler={chosenLetters} otherEnabler={guessedLetters} />
+        chosenLetters={chosenLetters}
+        errorCounter={errorCounter}
+        wordLetters={wordLetters} />
+      <Letras buttonFunction={guessLetter} chosenLetters={chosenLetters} otherEnabler={guessedLetters} />
     </div>
   );
 }

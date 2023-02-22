@@ -9,7 +9,7 @@ import "./jogo.css";
 import Palavra from "./Palavra";
 
 
-export default function Jogo({ buttonFunction, word, buttonEnabler, containsLetter, letter, errorCounter }) {
+export default function Jogo({ buttonFunction, chosenLetters, letter, errorCounter, wordLetters }) {
     const images = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
     return (
         <div className="game-gallows">
@@ -18,12 +18,18 @@ export default function Jogo({ buttonFunction, word, buttonEnabler, containsLett
             </figure>
             <div>
                 <div className="game-button">
-                    <button className={(buttonEnabler.length > 0) ? "game-started-button" : undefined}
+                    <button className={(chosenLetters.length > 0) ? "game-started-button" : undefined}
                         onClick={buttonFunction}
-                        disabled={(buttonEnabler.length === 0) ? false : true}>Escolher Palavra</button>
+                        disabled={(chosenLetters.length === 0) ? false : true}>Escolher Palavra</button>
                 </div>
                 <div className="chosen-word">
-                    {word.map((char, index) => (<Palavra key={index} char={char} containsLetter={containsLetter} letter={letter} />))
+                    {chosenLetters.map((char, index) => (<Palavra
+                        key={index}
+                        char={char}
+                        letter={letter}
+                        errorCounter={errorCounter}
+                        wordLetters={wordLetters}
+                        chosenLetters={chosenLetters} />))
                     }
                 </div>
             </div>

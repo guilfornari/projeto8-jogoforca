@@ -2,7 +2,7 @@ import Letra from "./Letra";
 import "./letras.css";
 
 
-export default function Letras({ buttonEnabler, buttonFunction, otherEnabler }) {
+export default function Letras({ chosenLetters, buttonFunction, otherEnabler }) {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g",
         "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
         "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -12,7 +12,7 @@ export default function Letras({ buttonEnabler, buttonFunction, otherEnabler }) 
             {alfabeto.map((character) => <Letra
                 key={character}
                 letter={character}
-                buttonEnabler={buttonEnabler}
+                chosenLetters={chosenLetters}
                 buttonFunction={buttonFunction}
                 otherEnabler={otherEnabler} />)}
         </ul>
