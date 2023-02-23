@@ -38,7 +38,6 @@ function App() {
       console.log([...chosenLetters]);
     } else {
       setErrorCounter(errorCounter + 1);
-      console.log(errorCounter);
     }
   }
 
@@ -48,7 +47,10 @@ function App() {
         chosenLetters={chosenLetters}
         errorCounter={errorCounter}
         wordLetters={wordLetters} />
-      <Letras buttonFunction={guessLetter} chosenLetters={chosenLetters} otherEnabler={guessedLetters} />
+      <Letras buttonFunction={guessLetter}
+        chosenLetters={chosenLetters}
+        guessedLetters={guessedLetters}
+        errorCounter={errorCounter} />
     </div>
   );
 }

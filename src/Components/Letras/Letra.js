@@ -1,8 +1,12 @@
-export default function Letra({ chosenLetters, buttonFunction, letter, otherEnabler }) {
+export default function Letra({ chosenLetters, buttonFunction, letter, guessedLetters, errorCounter }) {
     return (
         <button onClick={() => buttonFunction(letter)}
-            disabled={(chosenLetters.length > 0 && !otherEnabler.includes(letter)) ? false : true}
-            className={(chosenLetters.length > 0 && !otherEnabler.includes(letter)) ? "enabled-button" : undefined}>
+            disabled={(chosenLetters.length > 0 &&
+                !guessedLetters.includes(letter) &&
+                chosenLetters.includes("_") && !(errorCounter === 6)) ? false : true}
+            className={(chosenLetters.length > 0 &&
+                !guessedLetters.includes(letter) &&
+                chosenLetters.includes("_") && !(errorCounter === 6)) ? "enabled-button" : undefined}>
             {letter}
         </button>
     );
