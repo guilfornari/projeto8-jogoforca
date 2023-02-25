@@ -6,37 +6,37 @@ import palavras from "../palavras";
 import React from "react";
 
 function App() {
-  let [wordLetters, setWordLetters] = React.useState([]);
-  let [chosenLetters, setChosenLetters] = React.useState([]);
-  let [errorCounter, setErrorCounter] = React.useState(0);
-  let [guessedLetters, setGuessedLetters] = React.useState([]);
-
+  const [wordLetters, setWordLetters] = React.useState([]);
+  const [chosenLetters, setChosenLetters] = React.useState([]);
+  const [errorCounter, setErrorCounter] = React.useState(0);
+  const [guessedLetters, setGuessedLetters] = React.useState([]);
 
   function chooseWord() {
-    chosenLetters = [...[]];
-    errorCounter = 0;
-    guessedLetters = [...[]];
-    wordLetters = [...[]];
-    setChosenLetters([]);
-    setErrorCounter(0);
-    setGuessedLetters([]);
-    setWordLetters([]);
-    console.log(chosenLetters, errorCounter, guessedLetters, wordLetters);
-
+    startGame();
     let chosenWord = palavras[Math.floor(Math.random() * palavras.length)];
+    console.log(chosenWord);
     let letterList = Array.from(chosenWord);
     for (let i = 0; i < letterList.length; i++) {
       chosenLetters.push("_");
     }
     setChosenLetters([...chosenLetters]);
     setWordLetters([...letterList]);
-    console.log([letterList])
+
+  }
+
+  function startGame() {
+    chosenLetters.length = 0;
+    wordLetters.length = 0;
+    setChosenLetters([]);
+    setErrorCounter(0);
+    setGuessedLetters([]);
+    setWordLetters([]);
   }
 
   function guessLetter(letter) {
     if (!guessedLetters.includes(letter)) {
       guessedLetters.push(letter);
-      setGuessedLetters([...guessedLetters])
+      setGuessedLetters([...guessedLetters]);
     }
     if (wordLetters.includes(letter)) {
       for (let i = 0; i < wordLetters.length; i++) {
@@ -45,10 +45,10 @@ function App() {
         }
       }
       setChosenLetters([...chosenLetters]);
-      console.log([...chosenLetters]);
     } else {
       setErrorCounter(errorCounter + 1);
-      if (errorCounter + 1 === 6) {
+      const deadByHanging = 6;
+      if (errorCounter + 1 === deadByHanging) {
         setChosenLetters([...wordLetters]);
       }
 
