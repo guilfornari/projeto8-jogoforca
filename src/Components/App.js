@@ -13,9 +13,9 @@ function App() {
 
   function chooseWord() {
     startGame();
-    let chosenWord = palavras[Math.floor(Math.random() * palavras.length)];
+    const chosenWord = palavras[Math.floor(Math.random() * palavras.length)];
     console.log(chosenWord);
-    let letterList = Array.from(chosenWord);
+    const letterList = Array.from(chosenWord);
     for (let i = 0; i < letterList.length; i++) {
       chosenLetters.push("_");
     }

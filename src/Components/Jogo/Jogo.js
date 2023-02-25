@@ -19,9 +19,13 @@ export default function Jogo({ buttonFunction, chosenLetters, letter, errorCount
             </figure>
             <div>
                 <div className="game-button">
-                    <button data-test="choose-word" className={(chosenLetters.length === 0 || errorCounter === deadByHanging || !chosenLetters.includes("_")) ? undefined : "game-started-button"}
+                    <button data-test="choose-word" className={(chosenLetters.length === 0 ||
+                        errorCounter === deadByHanging ||
+                        !chosenLetters.includes("_")) ? undefined : "game-started-button"}
                         onClick={buttonFunction}
-                        disabled={(chosenLetters.length === 0 || errorCounter === deadByHanging || !chosenLetters.includes("_")) ? false : true}>Escolher Palavra</button>
+                        disabled={(chosenLetters.length === 0 ||
+                            errorCounter === deadByHanging ||
+                            !chosenLetters.includes("_")) ? false : true}>Escolher Palavra</button>
                 </div>
                 <div data-test="word" className="chosen-word">
                     {chosenLetters.map((char, index) => (<Palavra
