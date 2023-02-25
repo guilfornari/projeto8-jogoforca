@@ -6,13 +6,23 @@ import palavras from "../palavras";
 import React from "react";
 
 function App() {
-  const [wordLetters, setWordLetters] = React.useState([]);
-  const [chosenLetters, setChosenLetters] = React.useState([]);
-  const [errorCounter, setErrorCounter] = React.useState(0);
-  const [guessedLetters, setGuessedLetters] = React.useState([]);
+  let [wordLetters, setWordLetters] = React.useState([]);
+  let [chosenLetters, setChosenLetters] = React.useState([]);
+  let [errorCounter, setErrorCounter] = React.useState(0);
+  let [guessedLetters, setGuessedLetters] = React.useState([]);
 
 
   function chooseWord() {
+    chosenLetters = [...[]];
+    errorCounter = 0;
+    guessedLetters = [...[]];
+    wordLetters = [...[]];
+    setChosenLetters([]);
+    setErrorCounter(0);
+    setGuessedLetters([]);
+    setWordLetters([]);
+    console.log(chosenLetters, errorCounter, guessedLetters, wordLetters);
+
     let chosenWord = palavras[Math.floor(Math.random() * palavras.length)];
     let letterList = Array.from(chosenWord);
     for (let i = 0; i < letterList.length; i++) {
@@ -38,6 +48,10 @@ function App() {
       console.log([...chosenLetters]);
     } else {
       setErrorCounter(errorCounter + 1);
+      if (errorCounter + 1 === 6) {
+        setChosenLetters([...wordLetters]);
+      }
+
     }
   }
 
