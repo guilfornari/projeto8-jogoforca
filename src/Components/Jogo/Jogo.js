@@ -14,7 +14,7 @@ export default function Jogo({ buttonFunction, chosenLetters, letter, errorCount
     return (
         <div className="game-gallows">
             <figure>
-                <img src={images[errorCounter]} alt={images[errorCounter]} />
+                <img data-test="game-image" src={images[errorCounter]} alt={images[errorCounter]} />
             </figure>
             <div>
                 <div className="game-button">
