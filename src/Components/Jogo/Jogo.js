@@ -22,7 +22,7 @@ export default function Jogo({ buttonFunction, chosenLetters, letter, errorCount
                         onClick={buttonFunction}
                         disabled={(chosenLetters.length === 0 || errorCounter === 6) ? false : true}>Escolher Palavra</button>
                 </div>
-                <div className="chosen-word">
+                <div data-test="word" className="chosen-word">
                     {chosenLetters.map((char, index) => (<Palavra
                         key={index}
                         char={char}
