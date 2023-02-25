@@ -18,7 +18,7 @@ export default function Jogo({ buttonFunction, chosenLetters, letter, errorCount
             </figure>
             <div>
                 <div className="game-button">
-                    <button className={(chosenLetters.length === 0 || errorCounter === 6) ? undefined : "game-started-button"}
+                    <button data-test="choose-word" className={(chosenLetters.length === 0 || errorCounter === 6) ? undefined : "game-started-button"}
                         onClick={buttonFunction}
                         disabled={(chosenLetters.length === 0 || errorCounter === 6) ? false : true}>Escolher Palavra</button>
                 </div>
